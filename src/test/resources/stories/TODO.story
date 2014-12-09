@@ -41,3 +41,25 @@ Meta:
 @tag priority:p1,type:manual
 
 Given open home page
+
+Scenario: Viewed items should appear in recent views section
+Meta:
+@tag priority:p3
+
+Given luser on the home page
+When click 'Brands' link
+Then user on the 'BrandPage'
+When click 'ACME Electric' link
+And open 'any' item
+Given user on the 'HomePage' page
+Then this product in the recent view pool
+
+Scenario: Search functionality by product name
+Meta:
+@tag priority:p2
+
+Given luser on the home page
+When enter '123' in 'Main search field'
+And click on 'Search icon'
+Then see 'Items per page' message
+And products name on the page have '123' test
