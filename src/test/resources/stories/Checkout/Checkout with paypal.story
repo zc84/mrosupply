@@ -1,7 +1,6 @@
 Scenario: 01. Logged user should be able to order items using paypal
 Meta:
 @tag priority:p1
-@debug 1
 
 Given logged user on the home page
 When click 'Brands' link
@@ -24,7 +23,7 @@ Then see 'Congratulations! You have just completed your order!' message
 Scenario: 02. Unlogged user should be able to order items using paypal
 Meta:
 @tag priority:p1
-
+@issue 329
 
 Given user on the home page
 When click 'Brands' link
@@ -48,7 +47,7 @@ Then see 'Congratulations! You have just completed your order!' message
 Scenario: 03. User should be able to order item from quotes page using paypal
 Meta:
 @tag priority:p1
-@debug 1
+
 
 
 Given logged user on the home page

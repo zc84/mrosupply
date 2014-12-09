@@ -34,6 +34,7 @@ public class AbstractPage extends PageObject {
     public Map<String, String> get_default_elements() {
 
         Map<String, String> elements = new HashMap<>();
+        elements.put("Sign In", "//a[text() = 'Sign In']");
         elements.put("Basket button", "//div[@class = 'cart_bg']//a");
 
         return elements;
