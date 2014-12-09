@@ -35,3 +35,9 @@ Given open home page
 When login
 And go to My account
 And click on 'Payment Info link'
+
+Scenario: Search
+Meta:
+@tag priority:p1,type:manual
+
+Given open home page

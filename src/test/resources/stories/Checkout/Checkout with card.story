@@ -1,6 +1,7 @@
-Scenario: (issue) Shipment method should be available for the ZKL Bearing Corp items
+Scenario: Shipment method should be available for the ZKL Bearing Corp items
 Meta:
 @tag priority:p1
+@issue 297
 
 Given user on the home page
 And user on the 'BrandPage' page

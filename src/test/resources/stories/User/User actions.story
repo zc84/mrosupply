@@ -1,6 +1,7 @@
 Scenario: User should be able to register
 Meta:
 @tag priority:p1
+@issue 294
 
 Given user on the home page
 When click 'Register' link
