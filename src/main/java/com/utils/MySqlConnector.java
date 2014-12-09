@@ -1,33 +1,22 @@
 package com.utils;
 
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
+
 import org.apache.log4j.Logger;
 
-import java.net.ServerSocket;
 import java.sql.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Properties;
 
 public class MySqlConnector {
 
     private static Logger logger = Logger.getLogger(MySqlConnector.class);
     final int dbPort = 3306;
-    final int sshPort = 22;
     String driverName = "com.mysql.jdbc.Driver";
     Connection connection;
-    Session session;
     String serverName;
     String database;
     String username;
     String password;
-    String sshUser;
-    String sshPassword;
-    String sshHost;
-    int sshLocalPort;
-    ServerSocket serverSocket;
 
     public MySqlConnector() throws Exception {
         close();
@@ -41,26 +30,6 @@ public class MySqlConnector {
         password = LoadProperties.loadProperty("password");
         createConnection();
     }
-
-    // public MySqlConnector(String sshHost) throws NumberFormatException,
-    // JSchException, SQLException, IOException, ClassNotFoundException {
-    //
-    // serverSocket = new ServerSocket(0);
-    //
-    // serverName = LoadProperties.loadProperty("serverName");
-    // database = LoadProperties.loadProperty("database");
-    // username = LoadProperties.loadProperty("username");
-    // password = LoadProperties.loadProperty("password");
-    //
-    // sshUser = LoadProperties.loadProperty("sshUser");
-    // sshPassword = LoadProperties.loadProperty("sshPassword");
-    // sshLocalPort = serverSocket.getLocalPort();
-    // this.sshHost = sshHost;
-    //
-    // logger.info("Init connection to the remote " + sshHost + " host");
-    // createSSHsession();
-    // createConnection();
-    // }
 
     public MySqlConnector(String database) throws Exception {
         close();
@@ -100,23 +69,6 @@ public class MySqlConnector {
         if (!error.isEmpty()) {
             throw new Exception(error);
         }
-    }
-
-    public void createSSHsession() throws NumberFormatException, JSchException, SQLException {
-
-        logger.info("Init port forwarding to the " + sshHost);
-        JSch jsch = new JSch();
-        Properties config = new Properties();
-        config.put("StrictHostKeyChecking", "no");
-
-        session = jsch.getSession(sshUser, sshHost, sshPort);
-        session.setPassword(sshPassword);
-        session.setConfig(config);
-        session.setTimeout(0);
-        session.connect();
-        int assinged_port = session.setPortForwardingL(sshLocalPort, sshHost, dbPort);
-
-        logger.info("Forward data " + sshHost + ":" + dbPort + " --> " + serverName + ":" + assinged_port);
     }
 
     public void close() throws SQLException {
