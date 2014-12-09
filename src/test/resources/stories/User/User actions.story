@@ -15,6 +15,7 @@ Then see 'Account Center' message
 Scenario: User should be able to subscribe for weekly updates
 Meta:
 @tag priority:p3
+@issue 309
 
 Given user on the home page
 When enter random email in 'Submit email field'
