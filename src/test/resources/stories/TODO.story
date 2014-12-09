@@ -20,7 +20,7 @@ Scenario: Products per page limitation
 Meta:
 @tag priority:p4,type:manual
 
-Given open home page
+Given open home page 
 When go to products
 Then 'Items per page dropdown' not available
 When select '36' from 'Items per page dropdown'
