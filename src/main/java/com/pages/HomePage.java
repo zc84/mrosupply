@@ -20,6 +20,7 @@ public class HomePage extends AbstractPage {
 
         elements.put("Submit email field", "//input[@id = 'banner_mail']");
         elements.put("Submit email button", "//form//input[@value='SUBMIT']");
+        elements.put("Subscribe bunner appeared", "//img[contains(@href, 'BannerAck2.png')]");
     }
 
 

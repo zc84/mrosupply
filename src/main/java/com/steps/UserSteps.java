@@ -91,6 +91,7 @@ public class UserSteps extends BasicSteps {
         enter_in(username, "Username field");
         enter_in(password, "Password field");
         click_on("Login button");
+        currentPage.$(get_element("Login button")).shouldNotBeVisible();
     }
 
     @Step
