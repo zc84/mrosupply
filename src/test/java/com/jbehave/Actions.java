@@ -30,6 +30,7 @@ public class Actions extends BasicFlow {
         click_on_link("Sign In");
         user_on_the_page("LoginPage");
         steps.login(DataProvider.USERNAME, DataProvider.PASSWORD);
+        element_not_available("Sign In");
         user_on_the_page("HomePage");
     }
 
