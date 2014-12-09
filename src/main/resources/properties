@@ -1,0 +1,17 @@
+#Application properties
+url=${webdriver.base.url}
+
+#Gmail properties
+gmail.address=mrosupplytesting@gmail.com
+gmail.password=Toriabra909
+
+#DB properties
+serverName=${db.host}
+database=${db.name}
+username=${db.user}
+password=${db.pass}
+
+#SSH properties
+sshHost=${ssh.host}
+sshUser=${ssh.user}
+sshPassword=${ssh.pass}

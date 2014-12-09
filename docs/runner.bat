@@ -1,0 +1,1 @@
+mvn clean integration-test thucydides:aggregate -Dmaven.test.failure.ignore=true -Dmetafilter="groovy: (Area == 'edit'  && Project == 'bbreg') || Area == '1'" -Ptest
