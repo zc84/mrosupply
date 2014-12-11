@@ -30,6 +30,7 @@ public class TestRunner extends ThucydidesJUnitStories {
     @BeforeScenario
     public void reset() throws Exception {
         new DataProvider();
+        new Gmail().clearEmailBox();
     }
 
     @AfterStories

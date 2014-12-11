@@ -57,6 +57,8 @@ public class AdminSteps extends BasicSteps {
     @Step
     public void is_order_status(String orderStatus) {
         WebElementFacade order = adminPage.get_order_by_id(FlowDataProvider.ADMIN_ORDER_ID);
-        Assert.assertTrue("Order status should be " + orderStatus, orderStatus.equals(adminPage.get_order_status(order)));
+        String actualStatus = adminPage.get_order_status(order);
+        Assert.assertTrue("Order " + FlowDataProvider.ADMIN_ORDER_ID + " status should be " + orderStatus +
+                " actual status is " + actualStatus, orderStatus.equals(actualStatus));
     }
 }

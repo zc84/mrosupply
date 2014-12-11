@@ -234,9 +234,13 @@ public class BasicSteps extends ScenarioSteps {
 
     @Step
     public void wait_for_email(String subj, String waitInMin) throws Exception {
-        new Gmail().clearEmailBox();
         new Gmail().waitForNewEmail(Integer.parseInt(waitInMin));
         email = Gmail.getGoalMessage(subj);
+    }
+
+    @Step
+    public void clear_email_box() throws MessagingException {
+        new Gmail().clearEmailBox();
     }
 
     @Step

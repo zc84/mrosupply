@@ -60,10 +60,10 @@ public class Actions extends BasicFlow {
 
     @When("fill personal info section")
     public void fill_peronal_info_section() throws Exception {
-        enter_in("test", "First name field");
+        enter_in("automation", "First name field");
         waitabit("1000");
         press(Keys.TAB, "First name field");
-        enter_in("test", "Last name field");
+        enter_in("user", "Last name field");
         waitabit("1000");
         press(Keys.TAB, "Last name field");
         enter_in(DataProvider.USER_EMAIL, "Email field");
