@@ -144,4 +144,14 @@ public class Actions extends BasicFlow {
     public void sorting_correct_for_pages(String sortingType, String pagesCount) throws Exception {
         steps.sorting_correct_for_pages(sortingType, pagesCount);
     }
+
+    @Then("'$productCount' producats available for '$pagesCount' pages")
+    public void products_per_page_correct_for_pages(String productCount, String pagesCount) throws Exception {
+        steps.products_per_page_correct_for_pages(productCount, pagesCount);
+    }
+
+    @Then("each product has '$partName' in title for '$pagesCount' pages")
+    public void correspondent_products_found(String partName, String pagesCount) throws Exception {
+        steps.correspondent_products_found(partName, pagesCount);
+    }
 }

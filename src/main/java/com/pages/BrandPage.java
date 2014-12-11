@@ -30,8 +30,8 @@ public class BrandPage extends AbstractPage {
     public void init_elements() {
         elements.putAll(get_default_elements());
 
-        elements.put("Available products", "//div[@class='results-area']//td/..");
         elements.put("Sort by dropdown", "//select[@id = 'id_sort_by']");
+        elements.put("Items per page dropdown", "//select[@id = 'id_per_page']");
         elements.put("Paging", "//div[@class = 'paging']");
     }
 

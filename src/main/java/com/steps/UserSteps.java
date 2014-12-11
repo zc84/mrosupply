@@ -159,12 +159,30 @@ public class UserSteps extends BasicSteps {
 
                     if (sortingType.contains("desc")) {
                         Assert.assertTrue("Is " + sortingType + " correct on " + page + " page - " + brandPage.get_product_id(product), pruductPrice > curProductPrice
-                        || pruductPrice == curProductPrice);
+                                || pruductPrice == curProductPrice);
                     } else
                         Assert.assertTrue("Is " + sortingType + " correct on " + page + " page - " + brandPage.get_product_id(product), pruductPrice < curProductPrice
-                        || pruductPrice == curProductPrice);
+                                || pruductPrice == curProductPrice);
                     pruductPrice = curProductPrice;
                 }
+            go_to_page(String.valueOf(page + 1));
+        }
+    }
+
+    @Step
+    public void products_per_page_correct_for_pages(String productCount, String pagesCount) {
+
+        for (int page = 1; page < Integer.parseInt(pagesCount); page++) {
+            Assert.assertTrue("Products per page should be " + productCount, brandPage.get_available_products().size() == Integer.parseInt(productCount));
+            go_to_page(String.valueOf(page + 1));
+        }
+    }
+
+    @Step
+    public void correspondent_products_found(String partName, String pagesCount) {
+        for (int page = 1; page < Integer.parseInt(pagesCount); page++) {
+            for (WebElementFacade product : brandPage.get_available_products())
+                Assert.assertTrue("Is product " + brandPage.get_product_id(product) + " has " + partName + " in title", brandPage.get_product_name(product).contains(partName));
             go_to_page(String.valueOf(page + 1));
         }
     }
@@ -173,4 +191,6 @@ public class UserSteps extends BasicSteps {
     public void go_to_page(String pageNumber) {
         brandPage.go_to_page(pageNumber);
     }
+
+
 }
