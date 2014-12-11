@@ -26,4 +26,14 @@ public class AdminActions extends BasicFlow {
         steps.login(DataProvider.ADMIN_USERNAME, DataProvider.ADMIN_PASSWORD);
         element_not_available("Login button");
     }
+
+    @When("open '$orderStatus' order created by '$customer'")
+    public void open_order_in_status_createdby(String orderStatus, String customer) throws Exception {
+        steps.open_order_in_status_createdby(orderStatus, customer);
+    }
+
+    @Then("status is '$expectedStatus' for this order")
+    public void is_order_status(String orderStatus) throws Exception {
+        steps.is_order_status(orderStatus);
+    }
 }

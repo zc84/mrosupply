@@ -15,6 +15,8 @@ public class DataProvider {
     public static Product SELECTED_PRODUCT;
 
     public DataProvider() throws Exception {
+
+        new FlowDataProvider();
         SELECTED_PRODUCT = null;
         ADDED_PRODUCT = null;
     }

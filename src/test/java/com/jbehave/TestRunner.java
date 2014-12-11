@@ -5,6 +5,7 @@ import com.utils.Gmail;
 import jxl.write.WriteException;
 import net.thucydides.jbehave.ThucydidesJUnitStories;
 import org.jbehave.core.annotations.AfterStories;
+import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.BeforeStories;
 import org.jbehave.core.annotations.BeforeStory;
 
@@ -26,7 +27,7 @@ public class TestRunner extends ThucydidesJUnitStories {
         new StoryProvider().generate_report();
     }
 
-    @BeforeStory
+    @BeforeScenario
     public void reset() throws Exception {
         new DataProvider();
     }

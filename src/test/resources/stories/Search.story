@@ -12,7 +12,6 @@ And 'Available products' available
 Scenario: Search functionality by product name
 Meta:
 @tag priority:p2
-@debug
 
 Given user on the home page
 When enter 'SECONDARY VOLTS' in 'Search field'
