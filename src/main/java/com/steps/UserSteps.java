@@ -138,4 +138,39 @@ public class UserSteps extends BasicSteps {
 
         select_from_dropdown(state, "State dropdown");
     }
+
+    @Step
+    public void sorting_correct_for_pages(String sortingType, String pagesCount) {
+
+        for (int page = 1; page < Integer.parseInt(pagesCount); page++) {
+
+            List<WebElementFacade> allProducts = brandPage.get_available_products();
+            Double pruductPrice = null;
+
+            try {
+                pruductPrice = Double.parseDouble(brandPage.get_product_price(allProducts.get(0)));
+            } catch (Exception e) {
+
+            }
+
+            if (pruductPrice != null)
+                for (WebElementFacade product : allProducts) {
+                    double curProductPrice = Double.parseDouble(brandPage.get_product_price(product));
+
+                    if (sortingType.contains("desc")) {
+                        Assert.assertTrue("Is " + sortingType + " correct on " + page + " page - " + brandPage.get_product_id(product), pruductPrice > curProductPrice
+                        || pruductPrice == curProductPrice);
+                    } else
+                        Assert.assertTrue("Is " + sortingType + " correct on " + page + " page - " + brandPage.get_product_id(product), pruductPrice < curProductPrice
+                        || pruductPrice == curProductPrice);
+                    pruductPrice = curProductPrice;
+                }
+            go_to_page(String.valueOf(page + 1));
+        }
+    }
+
+    @Step
+    public void go_to_page(String pageNumber) {
+        brandPage.go_to_page(pageNumber);
+    }
 }

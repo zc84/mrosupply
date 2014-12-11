@@ -31,6 +31,8 @@ public class BrandPage extends AbstractPage {
         elements.putAll(get_default_elements());
 
         elements.put("Available products", "//div[@class='results-area']//td/..");
+        elements.put("Sort by dropdown", "//select[@id = 'id_sort_by']");
+        elements.put("Paging", "//div[@class = 'paging']");
     }
 
     public List<WebElementFacade> get_available_products() {
@@ -50,7 +52,7 @@ public class BrandPage extends AbstractPage {
     }
 
     public String get_product_price(WebElementFacade product) {
-        return product.then().findBy(itemPriceSelector).getText().trim();
+        return product.then().findBy(itemPriceSelector).getText().trim().replace("$", "");
     }
 
     public void open_product(WebElementFacade product) {
@@ -63,5 +65,9 @@ public class BrandPage extends AbstractPage {
 
     public boolean is_delete_item_available(WebElementFacade selectedProduct) {
         return selectedProduct.then().findBy(deleteFromBasketItemIconSelector).isVisible();
+    }
+
+    public void go_to_page(String pageNumber) {
+        findBy("//a[@class = 'page'][text() = '" + pageNumber + "']").click();
     }
 }

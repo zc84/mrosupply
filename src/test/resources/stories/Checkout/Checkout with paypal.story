@@ -1,6 +1,7 @@
 Scenario: 01. Logged user should be able to order items using paypal
 Meta:
 @tag priority:p1
+@issue 329
 
 Given logged user on the home page
 When click 'Brands' link
@@ -34,7 +35,6 @@ And click on 'Basket button'
 Then user on the 'ShoppingCartPage'
 When click on 'Checkout button'
 And fill personal info section
-
 And fill shipping info section
 And click on 'Continue button'
 Then see 'Choose shipment method' message
@@ -47,8 +47,6 @@ Then see 'Congratulations! You have just completed your order!' message
 Scenario: 03. User should be able to order item from quotes page using paypal
 Meta:
 @tag priority:p1
-
-
 
 Given logged user on the home page
 When click 'Brands' link

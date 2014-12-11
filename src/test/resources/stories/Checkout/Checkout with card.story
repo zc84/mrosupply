@@ -41,7 +41,7 @@ Then see 'Congratulations! You have just completed your order!' message
 Scenario: 02. Registered customer should be able to order an item
 Meta:
 @tag priority:p1
-
+@issue 329
 
 Given logged user on the home page
 When click 'Brands' link
@@ -64,7 +64,7 @@ Then see 'Congratulations! You have just completed your order!' message
 Scenario: 03. User should be able to order item from quotes page using card
 Meta:
 @tag priority:p1
-
+@debug1
 
 Given logged user on the home page
 When click 'Brands' link

@@ -139,4 +139,9 @@ public class Actions extends BasicFlow {
     public void product_email_recieved(String minsPeriod) throws Exception {
         steps.wait_for_email("Product Detail: " + DataProvider.SELECTED_PRODUCT.getProductId(), minsPeriod);
     }
+
+    @Then("products sort '$sortingType' for '$pagesCount' pages")
+    public void sorting_correct_for_pages(String sortingType, String pagesCount) throws Exception {
+        steps.sorting_correct_for_pages(sortingType, pagesCount);
+    }
 }

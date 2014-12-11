@@ -128,10 +128,11 @@ public class BasicSteps extends ScenarioSteps {
         if (!itemName.equals("any")) {
             String optionText = get_full_text_from_element(itemName, elementName);
             dropdown.selectByVisibleText(optionText);
-            show_message(dropdown.getSelectedValue() + " was selected");
+            show_message(currentPage.$(get_element(elementName)).getSelectedValue() + " was selected");
+
         } else {
             dropdown.selectByIndex(2);
-            show_message(dropdown.getSelectedValue() + " was selected");
+            show_message(currentPage.$(get_element(elementName)).getSelectedValue() + " was selected");
         }
     }
 
