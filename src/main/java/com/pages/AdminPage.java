@@ -58,6 +58,6 @@ public class AdminPage extends AbstractPage {
     }
 
     public WebElementFacade get_order_by_id(String adminOrderId) {
-        return findBy(elements.get("Orders on page") + "//a[text() = '"+adminOrderId+"']/../../..");
+        return findBy(elements.get("Orders on page") + "//a[text() = '"+adminOrderId+"']/../..");
     }
 }

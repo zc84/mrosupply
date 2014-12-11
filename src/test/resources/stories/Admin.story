@@ -5,7 +5,7 @@ Meta:
 
 Given admin on the home page
 When click on 'Orders link'
-And open 'Unclimed' order created by 'automation user'
+And open 'Unclaimed' order created by 'automation user'
 And select 'Completed --' from 'Status dropdown'
 And click on 'Save button'
 Then status is 'Comleted' for this order

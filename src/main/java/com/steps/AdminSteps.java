@@ -44,10 +44,9 @@ public class AdminSteps extends BasicSteps {
 
         for (WebElementFacade order : adminPage.get_orders()) {
 
-            System.out.println("-------->" + adminPage.get_order_creator(order) + "--" + adminPage.get_order_status(order));
             if (adminPage.get_order_creator(order).contains(customer) && adminPage.get_order_status(order).equals(orderStatus)) {
-                adminPage.open_order(order);
                 FlowDataProvider.ADMIN_ORDER_ID = adminPage.get_order_id(order);
+                adminPage.open_order(order);
                 break;
             }
         }
