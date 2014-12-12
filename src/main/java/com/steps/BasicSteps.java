@@ -228,8 +228,6 @@ public class BasicSteps extends ScenarioSteps {
     @Step
     public void see_message(String message) throws Exception {
         currentPage.waitForAllTextToAppear(message);
-//        WebElement messageElement = getDriver().findElement(By.xpath("//body//*[not(self::script)][contains(text(), \"" + message + "\")]"));
-//        (currentPage.$(messageElement)).waitUntilVisible();
     }
 
     @Step
@@ -245,8 +243,7 @@ public class BasicSteps extends ScenarioSteps {
 
     @Step
     public void check_email_for_text(String text) throws InterruptedException, IOException, MessagingException {
-        new Gmail();
-        String email_text = Gmail.read_email_mime(email.getContent());
+        String email_text = Gmail.read_email_mime(email);
         Document content = Parser.getContent(email_text);
         Assert.assertTrue(text + " not found in " + content.text(), content.select("*:containsOwn(" + text + ")").size() > 0);
     }

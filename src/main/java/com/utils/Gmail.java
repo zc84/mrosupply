@@ -16,7 +16,6 @@ public class Gmail {
     private static Session session;
     private static Store store;
     private static Folder folder;
-    private static Message[] messages;
     private final String EMAIL = LoadProperties.loadProperty("gmail.address");
     private final String PASSWORD = LoadProperties.loadProperty("gmail.password");
     private final Properties props;
@@ -32,36 +31,34 @@ public class Gmail {
         folder.open(Folder.READ_WRITE);
     }
 
-    public static Message getGoalMessage(String subj) throws MessagingException {
+    public static Message getGoalMessage(String subj) throws Exception {
 
-        Message msg = null;
-        messages = folder.getMessages();
-        for (int i = 0; i < messages.length; i++) {
-            if (subj.equals("any")) {
-                msg = messages[i];
-                break;
-            }
-            if (msg.getSubject().contains(subj)) {
-                break;
-            }
-        }
-        return msg;
+        Message message = null;
+        if (subj.equals("any"))
+            return folder.getMessages()[0];
+        else
+            for (Message msg : folder.getMessages())
+                if (msg.getSubject().contains(subj)) {
+                    message = msg;
+                    break;
+                }
+        if (message == null)
+            throw new Exception(subj + " email wasn't found");
+        return message;
     }
 
     public static Message getFirstMsg() throws MessagingException {
-
-        messages = folder.getMessages();
-        return messages[0];
+        return folder.getMessages()[0];
     }
 
     public static String readEmail(Message message) throws IOException, MessagingException {
         return message.getContent().toString();
     }
 
-    public static String read_email_mime(Object content) throws MessagingException, IOException {
+    public static String read_email_mime(Message email) throws MessagingException, IOException {
 
         StringBuilder sb = null;
-
+        Object content = email.getContent();
         if (content instanceof Multipart) {
 
             Multipart multi = ((Multipart) content);
@@ -79,9 +76,10 @@ public class Gmail {
                     sb.append(line + "\n");
                 }
             }
-        }
 
-        return sb.toString();
+            return sb.toString();
+
+        } else return email.getContent().toString();
     }
 
     public static void saveParts(Object content, String filename) throws IOException, MessagingException {

@@ -1,6 +1,7 @@
 Scenario: Change order status to Complete
 Meta:
 @tag priority:p1
+@debug
 
 Given admin on the home page
 When click on 'Orders link'
