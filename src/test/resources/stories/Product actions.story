@@ -42,3 +42,15 @@ Then user on the 'BrandPage'
 When click 'ACME Electric' link
 When select '36' from 'Items per page dropdown'
 Then '36' producats available for '2' pages
+
+Scenario: Viewed items should appear in recent views section
+Meta:
+@tag priority:p3
+
+Given user on the home page
+When click 'Brands' link
+Then user on the 'BrandPage'
+When click 'ACME Electric' link
+And open 'any' item
+And go to 'HomePage' page
+Then this product in recent view pool

@@ -26,6 +26,7 @@ public class BasicFlow {
     BasicSteps basicSteps;
 
     @Given("user on the '$page' page")
+    @When("go to '$page' page")
     public void user_on_specified_page(String page) throws ClassNotFoundException {
         basicSteps.open_page(page);
     }

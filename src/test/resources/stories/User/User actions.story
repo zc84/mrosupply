@@ -22,3 +22,17 @@ Given user on the home page
 When enter random email in 'Submit email field'
 And click on 'Submit email button'
 Then 'Subscribe bunner appeared' available
+
+Scenario: Add/Delete credit card
+Meta:
+@tag priority:p4,type:manual
+@issue 305
+
+Given logged user on the home page
+When click on 'My account link'
+Then user on the 'AccountPage'
+When click on 'Payment Info'
+And click on 'New button'
+Then 'Add credit card popup' available
+When add credit card
+

@@ -62,7 +62,6 @@ public class UserSteps extends BasicSteps {
     public void open_item(String productName) throws Exception {
 
         WebElementFacade product;
-
         if (productName.equals("any")) {
             List<WebElementFacade> availableProducts = brandPage.get_available_products();
             product = availableProducts.get(Math.randInt(0, availableProducts.size() - 1));
@@ -192,5 +191,16 @@ public class UserSteps extends BasicSteps {
         brandPage.go_to_page(pageNumber);
     }
 
+    @Step
+    public void is_product_in_recent_view_pool(String productName) {
 
+        boolean isFound = false;
+        for (WebElementFacade productInPool : homePage.get_products_from_recent_pool()) {
+            if (productInPool.then().findBy(".//a[@data-product_pk]").getAttribute("data-product_pk").equals(DataProvider.SELECTED_PRODUCT.getProductId())) {
+                isFound = true;
+                break;
+            }
+            Assert.assertTrue("Is " + DataProvider.SELECTED_PRODUCT.getProductName() + " in recent pool", isFound);
+        }
+    }
 }

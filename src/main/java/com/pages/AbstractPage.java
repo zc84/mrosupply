@@ -38,6 +38,7 @@ public class AbstractPage extends PageObject {
         elements.put("Sign In", "//a[text() = 'Sign In']");
         elements.put("Basket button", "//div[@class = 'cart_bg']//a");
         elements.put("Available products", "//div[@class='results-area']//td/..");
+        elements.put("Products in recent view pool", "//div[@class='recent']//div[@class = 'recent_item']");
 
         return elements;
     }

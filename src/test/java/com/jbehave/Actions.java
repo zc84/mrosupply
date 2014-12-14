@@ -84,7 +84,15 @@ public class Actions extends BasicFlow {
 
     @When("fill credit card details")
     public void fill_credit_card_details() throws Exception {
-        enter_in("4242424242424242  ", "Card number field");
+        enter_in(DataProvider.CREDITCARD_NUMBER, "Card number field");
+        enter_in("2020", "CVV number field");
+        enter_in("Test order holder  ", "Cardholder field");
+        steps.select_expiration_date();
+    }
+
+    @When("add credit card")
+    public void add_credit_card() throws Exception {
+        enter_in(DataProvider.CREDITCARD_NUMBER, "Card number field");
         enter_in("2020", "CVV number field");
         enter_in("Test order holder  ", "Cardholder field");
         steps.select_expiration_date();
@@ -153,5 +161,10 @@ public class Actions extends BasicFlow {
     @Then("each product has '$partName' in title for '$pagesCount' pages")
     public void correspondent_products_found(String partName, String pagesCount) throws Exception {
         steps.correspondent_products_found(partName, pagesCount);
+    }
+
+    @Then("this product in recent view pool")
+    public void is_product_in_recent_view_pool() throws Exception {
+        steps.is_product_in_recent_view_pool(DataProvider.SELECTED_PRODUCT.getProductName());
     }
 }
