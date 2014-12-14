@@ -18,17 +18,19 @@ public class Gmail {
     private static Folder folder;
     private final String EMAIL = LoadProperties.loadProperty("gmail.address");
     private final String PASSWORD = LoadProperties.loadProperty("gmail.password");
-    private final Properties props;
+    private Properties props;
 
     public Gmail() throws MessagingException {
 
-        props = System.getProperties();
-        props.setProperty("mail.store.protocol", "imaps");
-        session = Session.getDefaultInstance(props, null);
-        store = session.getStore("imaps");
-        store.connect("imap.gmail.com", EMAIL, PASSWORD);
-        folder = store.getFolder("Inbox");
-        folder.open(Folder.READ_WRITE);
+        if (!folder.isOpen()) {
+            props = System.getProperties();
+            props.setProperty("mail.store.protocol", "imaps");
+            session = Session.getDefaultInstance(props, null);
+            store = session.getStore("imaps");
+            store.connect("imap.gmail.com", EMAIL, PASSWORD);
+            folder = store.getFolder("Inbox");
+            folder.open(Folder.READ_WRITE);
+        }
     }
 
     public static Message getGoalMessage(String subj) throws Exception {
@@ -145,7 +147,6 @@ public class Gmail {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH_mm_ss");
         String filename = "temp/" + dateFormat.format(calendar.getTime()) + "_" + subject;
-
         saveParts(msg.getContent(), filename);
     }
 }
