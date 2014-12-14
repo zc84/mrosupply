@@ -44,7 +44,6 @@ Meta:
 @tag priority:p1
 @issue 329
 
-
 Given logged user on the home page
 When click 'Brands' link
 Then user on the 'BrandPage'
@@ -66,8 +65,7 @@ Then see 'Congratulations! You have just completed your order!' message
 Scenario: 04. User should be able to order item from quotes page using card
 Meta:
 @tag priority:p1
-@debug
-
+@issue 334
 
 Given logged user on the home page
 When click 'Brands' link
