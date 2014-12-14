@@ -134,6 +134,7 @@ public class BasicSteps extends ScenarioSteps {
             dropdown.selectByIndex(2);
             show_message(currentPage.$(get_element(elementName)).getSelectedValue() + " was selected");
         }
+        new Gmail().clearEmailBox();
     }
 
     public void is_enabled(String elementName) throws Exception {

@@ -2,6 +2,7 @@ package com.jbehave;
 
 import com.data.DataProvider;
 import com.steps.UserSteps;
+import com.utils.Gmail;
 import com.utils.Math;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -88,6 +89,7 @@ public class Actions extends BasicFlow {
         enter_in("2020", "CVV number field");
         enter_in("Test order holder  ", "Cardholder field");
         steps.select_expiration_date();
+        new Gmail().clearEmailBox();
     }
 
     @When("add credit card")
@@ -96,11 +98,13 @@ public class Actions extends BasicFlow {
         enter_in("2020", "CVV number field");
         enter_in("Test order holder  ", "Cardholder field");
         steps.select_expiration_date();
+        click_on("Save button");
     }
 
     @When("fill paypal details")
     public void fill_paypal_details() throws Exception {
 
+        new Gmail().clearEmailBox();
         click_on("Pay with my PayPal account link");
         basicSteps.wait_while_paypal_loading();
         waitabit("15000");

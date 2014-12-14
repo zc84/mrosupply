@@ -7,7 +7,7 @@ public class FlowDataProvider {
 
     public static String ADMIN_ORDER_ID;
 
-    public FlowDataProvider() {
+    public void clear() {
         ADMIN_ORDER_ID = null;
     }
 }

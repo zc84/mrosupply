@@ -15,9 +15,8 @@ public class DataProvider {
     public static Product ADDED_PRODUCT;
     public static Product SELECTED_PRODUCT;
 
-    public DataProvider() throws Exception {
-
-        new FlowDataProvider();
+    public void clear() {
+        new FlowDataProvider().clear();
         SELECTED_PRODUCT = null;
         ADDED_PRODUCT = null;
     }

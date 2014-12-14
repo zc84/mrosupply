@@ -1,13 +1,11 @@
 package com.jbehave;
 
 import com.data.DataProvider;
-import com.utils.Gmail;
 import jxl.write.WriteException;
 import net.thucydides.jbehave.ThucydidesJUnitStories;
 import org.jbehave.core.annotations.AfterStories;
 import org.jbehave.core.annotations.BeforeScenario;
 import org.jbehave.core.annotations.BeforeStories;
-import org.jbehave.core.annotations.BeforeStory;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,8 +27,7 @@ public class TestRunner extends ThucydidesJUnitStories {
 
     @BeforeScenario
     public void reset() throws Exception {
-        new DataProvider();
-        new Gmail().clearEmailBox();
+        new DataProvider().clear();
     }
 
     @AfterStories

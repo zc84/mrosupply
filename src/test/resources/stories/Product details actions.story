@@ -1,6 +1,7 @@
-Scenario: User should be able to add item to basket from item details page
+Scenario: 01. User should be able to add item to basket from item details page
 Meta:
 @tag priority:p1
+
 
 Given logged user on the home page
 When click 'Brands' link
@@ -11,7 +12,7 @@ Then 'Add to basket button' available
 When click on 'Add to basket button'
 Then user on the 'ShoppingCartPage'
 
-Scenario: User should be able to add item to favorites from item details page
+Scenario: 02. User should be able to add item to favorites from item details page
 Meta:
 @tag priority:p1
 
@@ -24,7 +25,7 @@ Then 'Add to favorite link' available
 When click on 'Add to favorite link'
 Then see 'Product added to favorite' message
 
-Scenario: User should be able to email item
+Scenario: 03. User should be able to email item
 Meta:
 @tag priority:p1
 @ignore

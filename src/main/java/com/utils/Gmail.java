@@ -137,8 +137,9 @@ public class Gmail {
     }
 
     public void clearEmailBox() throws MessagingException {
-        for (Message msg : folder.getMessages())
-            msg.setFlag(Flags.Flag.DELETED, true);
+        if (folder.getMessages().length > 0)
+            for (Message msg : folder.getMessages())
+                msg.setFlag(Flags.Flag.DELETED, true);
     }
 
     public void getAttachment() throws MessagingException, IOException {

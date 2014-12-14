@@ -1,4 +1,4 @@
-Scenario: Shipment method should be available for the ZKL Bearing Corp items
+Scenario: 01. Shipment method should be available for the ZKL Bearing Corp items
 Meta:
 @tag priority:p1
 @issue 297
@@ -16,10 +16,11 @@ And click on 'Continue button'
 Then see 'Shipping Amount' message
 And 'Continue button' available
 
-Scenario: 01. Unregistered customer should be able to order an item
+Scenario: 02. Unregistered customer should be able to order an item
 Meta:
 @tag priority:p1
 @issue 329
+
 
 Given user on the home page
 When click 'Brands' link
@@ -38,10 +39,11 @@ And fill credit card details
 And click on 'Pay button'
 Then see 'Congratulations! You have just completed your order!' message
 
-Scenario: 02. Registered customer should be able to order an item
+Scenario: 03. Registered customer should be able to order an item
 Meta:
 @tag priority:p1
 @issue 329
+
 
 Given logged user on the home page
 When click 'Brands' link
@@ -61,10 +63,11 @@ And click on 'Pay button'
 And wait while loading
 Then see 'Congratulations! You have just completed your order!' message
 
-Scenario: 03. User should be able to order item from quotes page using card
+Scenario: 04. User should be able to order item from quotes page using card
 Meta:
 @tag priority:p1
-@debug1
+@debug
+
 
 Given logged user on the home page
 When click 'Brands' link
@@ -88,7 +91,7 @@ And click on 'Pay button'
 And wait while loading
 Then see 'Congratulations! You have just completed your order!' message
 
-Scenario: 04. It should be possible to checkout items from each available brand
+Scenario: 05. It should be possible to checkout items from each available brand
 Meta:
 @tag priority:p1
 @ignore
