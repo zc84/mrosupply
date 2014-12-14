@@ -22,7 +22,7 @@ public class Gmail {
 
     public Gmail() throws MessagingException {
 
-        if (!folder.isOpen()) {
+        if (folder == null || !folder.isOpen()) {
             props = System.getProperties();
             props.setProperty("mail.store.protocol", "imaps");
             session = Session.getDefaultInstance(props, null);
