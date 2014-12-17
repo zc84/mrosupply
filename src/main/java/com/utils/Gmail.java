@@ -133,7 +133,8 @@ public class Gmail {
                 logger.info("Waiting for " + ((waitInMin * 60 * 1000) - i) / 1000 + " secs");
             }
         }
-        if (!(folder.getMessageCount() > 0)) throw new Exception("Email wasn't received for " + DataProvider.USER_EMAIL + " after " + waitInMin + " mins");
+        if (!(folder.getMessageCount() > 0))
+            throw new Exception("Email wasn't received for " + DataProvider.USER_EMAIL + " after " + waitInMin + " mins");
     }
 
     public void clearEmailBox() throws MessagingException {

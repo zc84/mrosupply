@@ -14,7 +14,7 @@ Meta:
 @tag priority:p2
 
 Given user on the home page
-When enter 'SECONDARY VOLTS' in 'Search field'
+When enter 'VOLTS' in 'Search field'
 And press 'ENTER' for 'Search field'
 Then 'Available products' available
 And each product has 'SECONDARY VOLTS' in title for '2' pages

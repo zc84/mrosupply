@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class TestRunner extends ThucydidesJUnitStories {
 
     public TestRunner() throws ClassNotFoundException, SQLException, IOException {
-        runThucydides();
+        runThucydides().inASingleSession();
     }
 
     @BeforeStories
