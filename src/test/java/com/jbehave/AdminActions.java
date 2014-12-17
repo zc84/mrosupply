@@ -3,6 +3,7 @@ package com.jbehave;
 import com.data.DataProvider;
 import com.steps.AdminSteps;
 import com.steps.UserSteps;
+import com.utils.Gmail;
 import com.utils.Math;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -29,6 +30,7 @@ public class AdminActions extends BasicFlow {
 
     @When("open '$orderStatus' order created by '$customer'")
     public void open_order_in_status_createdby(String orderStatus, String customer) throws Exception {
+        new Gmail().clearEmailBox();
         steps.open_order_in_status_createdby(orderStatus, customer);
     }
 

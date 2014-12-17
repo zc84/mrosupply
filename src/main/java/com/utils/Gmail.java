@@ -140,6 +140,7 @@ public class Gmail {
         if (folder.getMessages().length > 0)
             for (Message msg : folder.getMessages())
                 msg.setFlag(Flags.Flag.DELETED, true);
+        folder.expunge();
     }
 
     public void getAttachment() throws MessagingException, IOException {
