@@ -38,7 +38,11 @@ public class Actions extends BasicFlow {
     @When("enter random email in '$fieldName'")
     public void enter_email(String fieldName) throws Exception {
         enter_in(Math.randInt(1, 99999) + "test" + Math.randInt(1, 99999) + "@test.com", fieldName);
+    }
 
+    @When("click logout")
+    public void logout() throws Exception {
+        steps.logout();
     }
 
     /**

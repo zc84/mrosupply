@@ -30,6 +30,8 @@ public class AccountPage extends AbstractPage {
         elements.put("Expires card year", "//select[@id = 'id_expiration_year']");
         elements.put("Cardholder field", "//input[@id = 'id_name']");
         elements.put("Save button", "//span[text() = 'Save']/..");
+
+        elements.put("File name field", "//input[@id = 'id_name']");
     }
 
     public List<WebElementFacade> getCards() {

@@ -28,6 +28,9 @@ public class TestRunner extends ThucydidesJUnitStories {
     @BeforeScenario
     public void reset() throws Exception {
         new DataProvider().clear();
+//TODO
+//        clean basket
+//        clean cc
     }
 
     @AfterStories

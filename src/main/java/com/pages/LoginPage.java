@@ -1,9 +1,11 @@
 package com.pages;
 
+import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebDriver;
 
 @DefaultUrl("/accounts/login/")
+@At(".*/accounts/login/.*")
 public class LoginPage extends AbstractPage {
 
 	public LoginPage(WebDriver driver) {

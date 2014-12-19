@@ -1,5 +1,6 @@
 package com.jbehave;
 
+import com.data.DataProvider;
 import com.steps.BasicSteps;
 import com.utils.DAO;
 import com.utils.Parser;
@@ -12,6 +13,9 @@ import org.jsoup.nodes.Document;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -58,6 +62,15 @@ public class BasicFlow {
     @When("press '$buttonName' for '$elementName'")
     public void press(Keys buttonName, String elementName) throws Exception {
         basicSteps.press(buttonName, elementName);
+    }
+
+    @When("select file to upload")
+    public void select_file_to_upload() throws AWTException, InterruptedException {
+        Thread.sleep(2000);
+        basicSteps.set_clipboard_data(new File(DataProvider.TEST_FILES_TO_UPLOAD).getAbsolutePath());
+        basicSteps.press_double_key(KeyEvent.VK_CONTROL, KeyEvent.VK_V);
+        basicSteps.press_key(KeyEvent.VK_ENTER);
+        basicSteps.press_key(KeyEvent.VK_ESCAPE);
     }
 
     @When("select '$text' from '$elementName'")
@@ -115,6 +128,11 @@ public class BasicFlow {
         basicSteps.has_options(dropDown, optionList.split(";"));
     }
 
+    @Then("'$attr' of '$elementName' is '$expectedValue'")
+    public void element_attribute_value_is(String elementName, String attr, String expectedValue) throws Exception {
+        basicSteps.element_attribute_value_is(elementName, attr, expectedValue);
+    }
+
     @Then("email '$subj' recieved after '$mins' mins")
     public void email_recieved(String subj, String mins) throws Exception {
         basicSteps.wait_for_email(subj, mins);
@@ -169,8 +187,7 @@ public class BasicFlow {
 
             version = doc.select("body tr:contains(Project version)").text().replace("Project version: ", "");
             buildDate = doc.select("body tr:contains(Project build date)").text().replace("Project build date: ", "");
-        }
-        catch(Throwable e) {
+        } catch (Throwable e) {
 
         }
         return "Build# " + version + " from " + buildDate;

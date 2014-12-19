@@ -228,6 +228,15 @@ public class BasicSteps extends ScenarioSteps {
     }
 
     @Step
+    public void element_attribute_value_is(String elementName, String attr, String expectedValue) throws Exception {
+        WebElement element = get_element(elementName);
+        if (attr.equals("text"))
+            Assert.assertTrue(elementName + " test is " + element.getText() + ", should be " + expectedValue, element.getText().contains(expectedValue));
+        else
+            Assert.assertTrue(elementName + " " + attr + " value is " + element.getAttribute(attr) + ", should be " + expectedValue, element.getAttribute(attr).contains(expectedValue));
+    }
+
+    @Step
     public void see_message(String message) throws Exception {
         currentPage.waitForAllTextToAppear(message);
     }

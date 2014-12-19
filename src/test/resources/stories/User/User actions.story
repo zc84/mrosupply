@@ -27,7 +27,6 @@ Scenario: 03. Add/Delete credit card
 Meta:
 @tag priority:p4
 @issue 305
-@debug
 
 Given logged user on the home page
 When click on 'My account link'
@@ -48,3 +47,27 @@ When click 'Contact Us' link
 Then see 'Call us at (888) 671-2883' message
 And see 'customerservice@mrosupply.com' message
 And see 'Send us a message' message
+
+Scenario: 05. User should be able to logout
+Meta:
+@priority p3
+
+Given logged user on the home page
+When click logout
+Then 'Sign In' available
+
+Scenario: 06. User should be able to upload form
+Meta:
+@priority p3
+@debug
+
+Given todo
+Given logged user on the home page
+When click on 'My account link'
+Then user on the 'AccountPage'
+When click 'Forms' link
+And click on 'Choose file button'
+And select file to upload
+And enter 'test upload file' in 'File name field'
+And click on 'Submit button'
+Then see 'File has been uploaded successfully' message

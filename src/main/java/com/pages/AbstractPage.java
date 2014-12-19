@@ -34,7 +34,13 @@ public class AbstractPage extends PageObject {
     public Map<String, String> get_default_elements() {
 
         Map<String, String> elements = new HashMap<>();
+
+        elements.put("Choose file button", "//input[@type='file']");
+        elements.put("Submit button", "//input[@value = 'Submit']");
+
         elements.put("Search field", "//input[@id = 'search-fld']");
+        elements.put("My account link", "//a[title() = 'My Account']");
+        elements.put("Signout link", "//a[text() = 'Signout']");
         elements.put("Sign In", "//a[text() = 'Sign In']");
         elements.put("Basket button", "//div[@class = 'cart_bg']//a");
         elements.put("Available products", "//div[@class='results-area']//td/..");

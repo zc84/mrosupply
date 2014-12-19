@@ -12,6 +12,7 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.pages.WebElementFacade;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
@@ -35,6 +36,12 @@ public class UserSteps extends BasicSteps {
         getDriver().manage().deleteAllCookies();
         homePage.open();
         AbstractPage.setCurrentPage(getPages().get(HomePage.class));
+    }
+
+    @Step
+    public void logout() throws Exception {
+        Actions action = new Actions(getDriver());
+        action.moveToElement(get_element("My account link")).click(get_element("Signout link")).build().perform();
     }
 
     @Step
@@ -209,7 +216,7 @@ public class UserSteps extends BasicSteps {
     @Step
     public void delete_cards() throws Exception {
 
-        while(accPage.getCards().size() > 0) {
+        while (accPage.getCards().size() > 0) {
             accPage.deleteCC();
             see_message("Credit Card is removed");
             refresh_page();

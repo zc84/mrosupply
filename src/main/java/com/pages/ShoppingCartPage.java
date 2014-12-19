@@ -21,6 +21,8 @@ public class ShoppingCartPage extends AbstractPage {
         elements.put("Continue button", "//*[text() = 'Continue']/..");
         elements.put("Checkout button", "//span[text() = 'Checkout']/..");
 
+        elements.put("Products quantity field", "//input[contains(@id, 'id_cart')][contains(@id, 'qty')]");
+
         elements.put("First name field", "//input[@id = 'id_order_info-first_name']");
         elements.put("Last name field", "//input[@id = 'id_order_info-last_name']");
         elements.put("Email field", "//input[@id = 'id_order_info-email']");

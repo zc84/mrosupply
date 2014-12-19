@@ -57,3 +57,16 @@ When click 'ACME Electric' link
 And open 'any' item
 And go to 'HomePage' page
 Then this product in recent view pool
+
+Scenario: 06. User should be able to add on cart a certain amount of qty for any product on cart
+Meta:
+@tag priority:p3
+
+Given user on the home page
+When click 'Brands' link
+Then user on the 'BrandPage'
+When click 'ACME Electric' link
+And add '2' 'any' items to basket
+And click on 'Basket button'
+Then user on the 'ShoppingCartPage'
+And 'value' of 'Products quantity field' is '2'

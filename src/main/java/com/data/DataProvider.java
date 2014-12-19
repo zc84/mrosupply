@@ -14,6 +14,7 @@ public class DataProvider {
     public static final String USER_EMAIL = LoadProperties.loadProperty("gmail.address");
     public static Product ADDED_PRODUCT;
     public static Product SELECTED_PRODUCT;
+    public static final String TEST_FILES_TO_UPLOAD = "src/main/resources/testfiletoupload.txt";
 
     public void clear() {
         new FlowDataProvider().clear();
