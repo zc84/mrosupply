@@ -42,11 +42,11 @@ public class AdminPage extends AbstractPage {
     }
 
     public String get_order_creator(WebElementFacade order) {
-        return order.then().findBy("./td[7]").getText().replace("  ", " ").trim();
+        return order.then().findBy("./td[6]").getText().replace("  ", " ").trim();
     }
 
     public String get_order_status(WebElementFacade order) {
-        return order.then().findBy("./td[9]").getText().replace("  ", " ").trim();
+        return order.then().findBy("./td[8]").getText().replace("  ", " ").trim();
     }
 
     public void open_order(WebElementFacade order) {

@@ -28,6 +28,7 @@ Meta:
 @tag priority:p4
 @issue 305
 
+Given todo
 Given logged user on the home page
 When click on 'My account link'
 Then user on the 'AccountPage'
