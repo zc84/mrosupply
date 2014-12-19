@@ -27,16 +27,17 @@ Scenario: 03. Add/Delete credit card
 Meta:
 @tag priority:p4
 @issue 305
+@debug
 
-Given todo
 Given logged user on the home page
 When click on 'My account link'
 Then user on the 'AccountPage'
 When click 'Payment Info' link
+And delete all creadit cards
 And click on 'New button'
 Then 'Add credit card popup' available
 When add credit card
-Then see '4242424242' message
+Then see '4242' message
 
 Scenario: 04. Contact Us
 Meta:

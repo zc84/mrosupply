@@ -1,4 +1,4 @@
-1. Scenario: Add/Delete credit card
+Scenario: Add/Delete credit card
 Meta:
 @tag priority:p4,type:manual
 @issue 305
@@ -8,7 +8,7 @@ When login
 And go to My account
 And click on 'Payment Info link'
 
-2. Scenario: User should be able to add on cart a certain amount of qty for any product on cart
+Scenario: User should be able to add on cart a certain amount of qty for any product on cart
 -	Given logged user on the home page 
 -	When click ‘Brands’ link
 -	Then user on the ‘Brand Page’

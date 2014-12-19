@@ -40,6 +40,8 @@ public class AbstractPage extends PageObject {
         elements.put("Available products", "//div[@class='results-area']//td/..");
         elements.put("Products in recent view pool", "//div[@class='recent']//div[@class = 'recent_item']");
 
+        elements.put("Yes pop button", "//span[@class='ui-button-text'][text()='Yes']");
+
         return elements;
     }
 

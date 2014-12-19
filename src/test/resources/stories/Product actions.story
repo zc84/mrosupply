@@ -1,5 +1,5 @@
 Meta:
-@debug
+
 
 Scenario: 01. If item was added to the basketm add to basket should be changed to remove from basket button
 Meta:

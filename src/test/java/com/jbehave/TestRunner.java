@@ -34,7 +34,6 @@ public class TestRunner extends ThucydidesJUnitStories {
     public void tearDown() throws IOException {
         Runtime.getRuntime().exec("taskkill /F /IM IEDriverServer.exe");
         Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe");
-        Runtime.getRuntime().exec("taskkill /F /IM chrome.exe");
     }
 
     /**

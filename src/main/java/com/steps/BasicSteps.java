@@ -221,7 +221,8 @@ public class BasicSteps extends ScenarioSteps {
         String error = "";
         List<String> options = currentPage.$(get_element(dropDown)).getSelectOptions();
         for (String option : optionList) {
-            if (!options.contains(option.trim())) error += option + " wasn't found in the " + dropDown + Arrays.asList(options) + ";";
+            if (!options.contains(option.trim()))
+                error += option + " wasn't found in the " + dropDown + Arrays.asList(options) + ";";
         }
         if (!error.isEmpty()) throw new Exception(error);
     }
@@ -255,13 +256,17 @@ public class BasicSteps extends ScenarioSteps {
     }
 
     @Step
+    public void refresh_page() {
+        getDriver().navigate().refresh();
+    }
+
+    @Step
     public void update_db(String querry) throws Exception {
         new DAO().execute(querry);
     }
 
     @Step
     public void show_message(String message) {
-
     }
 
     @Step

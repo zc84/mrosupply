@@ -101,6 +101,11 @@ public class Actions extends BasicFlow {
         click_on("Save button");
     }
 
+    @When("delete all creadit cards")
+    public void delete_cards() throws Exception {
+        steps.delete_cards();
+    }
+
     @When("fill paypal details")
     public void fill_paypal_details() throws Exception {
 

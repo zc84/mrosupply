@@ -3,6 +3,7 @@ package com.steps;
 import com.data.DataProvider;
 import com.data.Product;
 import com.pages.AbstractPage;
+import com.pages.AccountPage;
 import com.pages.BrandPage;
 import com.pages.HomePage;
 import com.utils.Math;
@@ -27,6 +28,7 @@ public class UserSteps extends BasicSteps {
 
     HomePage homePage;
     BrandPage brandPage;
+    AccountPage accPage;
 
     @Step
     public void open_home(String enviromentUrl) {
@@ -201,6 +203,16 @@ public class UserSteps extends BasicSteps {
                 break;
             }
             Assert.assertTrue("Is " + DataProvider.SELECTED_PRODUCT.getProductName() + " in recent pool", isFound);
+        }
+    }
+
+    @Step
+    public void delete_cards() throws Exception {
+
+        while(accPage.getCards().size() > 0) {
+            accPage.deleteCC();
+            see_message("Credit Card is removed");
+            refresh_page();
         }
     }
 }
