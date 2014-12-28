@@ -45,6 +45,24 @@ public class UserSteps extends BasicSteps {
     }
 
     @Step
+    public void select_sorting(String value) throws Exception {
+        WebElement element = get_element("Sort by dropdown");
+        String classValue = element.getAttribute("class");
+        String idValue = element.getAttribute("id");
+        currentPage.evaluateJavascript("document.getElementById('" + idValue + "').className = '" + classValue.replace("-hidden", "") + "'");
+        select_from_dropdown(value, "Sort by dropdown");
+    }
+
+    @Step
+    public void select_items_onpage(String value) throws Exception {
+        WebElement element = get_element("Items per page dropdown");
+        String classValue = element.getAttribute("class");
+        String idValue = element.getAttribute("id");
+        currentPage.evaluateJavascript("document.getElementById('" + idValue + "').className = '" + classValue.replace("-hidden", "") + "'");
+        select_from_dropdown(value, "Items per page dropdown");
+    }
+
+    @Step
     public void add_product_to_basket(String productName, String count) throws Exception {
 
         WebElementFacade product;
@@ -146,6 +164,8 @@ public class UserSteps extends BasicSteps {
 
         select_from_dropdown(state, "State dropdown");
     }
+
+
 
     @Step
     public void sorting_correct_for_pages(String sortingType, String pagesCount) {

@@ -9,6 +9,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 /**
  * @author Dmitry Sherstobitov
@@ -43,6 +44,16 @@ public class Actions extends BasicFlow {
     @When("click logout")
     public void logout() throws Exception {
         steps.logout();
+    }
+
+    @When("select '$value' sorting")
+    public void select_sorting(String value) throws Exception {
+       steps.select_sorting(value);
+    }
+
+    @When("select '$value' items per page")
+    public void select_items_onpage(String value) throws Exception {
+        steps.select_items_onpage(value);
     }
 
     /**

@@ -21,7 +21,7 @@ Given user on the home page
 When click 'Brands' link
 Then user on the 'BrandPage'
 When click 'ACME Electric' link
-And select 'Price: low to high' from 'Sort by dropdown'
+And select 'Price: low to high' sorting
 Then products sort 'by price' for '2' pages
 
 Scenario: 03. Sort products by price(high to low)
@@ -32,7 +32,7 @@ Given user on the home page
 When click 'Brands' link
 Then user on the 'BrandPage'
 When click 'ACME Electric' link
-And select 'Price: high to low' from 'Sort by dropdown'
+And select 'Price: high to low' sorting
 Then products sort 'by price desc' for '2' pages
 
 Scenario: 04. Products per page limitation
@@ -43,7 +43,7 @@ Given user on the home page
 When click 'Brands' link
 Then user on the 'BrandPage'
 When click 'ACME Electric' link
-When select '36' from 'Items per page dropdown'
+When select '36' items per page
 Then '36' producats available for '2' pages
 
 Scenario: 05. Viewed items should appear in recent views section
