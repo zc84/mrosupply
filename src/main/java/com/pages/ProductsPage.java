@@ -1,7 +1,5 @@
 package com.pages;
 
-import net.thucydides.core.annotations.At;
-import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
@@ -11,11 +9,9 @@ import java.util.List;
  * @author Dmitry Sherstobitov
  */
 
-@At(".*brands/")
-@DefaultUrl("/brands/")
-public class BrandPage extends AbstractPage {
+public class ProductsPage extends AbstractPage {
 
-    public BrandPage(WebDriver driver) {
+    public ProductsPage(WebDriver driver) {
         super(driver);
     }
 
