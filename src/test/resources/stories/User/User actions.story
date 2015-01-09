@@ -59,7 +59,7 @@ Then 'Sign In' available
 Scenario: 06. User should be able to upload form
 Meta:
 @priority p3
-@debug
+
 
 Given todo
 Given logged user on the home page
@@ -71,3 +71,49 @@ And select file to upload
 And enter 'test upload file' in 'File name field'
 And click on 'Submit button'
 Then see 'File has been uploaded successfully' message
+
+Scenario: 06. User should be able to upload form
+Meta:
+@priority p3
+
+Given logged user on the home page
+When click on 'My account link'
+Then user on the 'AccountPage'
+When click 'Forms' link
+And click on 'Choose file button'
+And select file to upload
+And enter 'test upload file' in 'File name field'
+And click on 'Submit button'
+Then see 'File has been uploaded successfully' message
+
+Scenario: 07. All submenues of My account should be accessible
+Meta:
+@priority p3
+
+Given logged user on the home page
+When click on 'My account link'
+Then user on the 'AccountPage'
+And see 'Account Center' message
+And see 'View All Quotes' message
+And see 'View All Orders' message
+When click 'My Chats' link
+Then see 'Recent Chats' message
+When click 'Forms' link
+Then see 'Attached Forms/Documents' message
+When click 'Payment Info' link
+Then see 'Payment Info' message
+And see 'Credit Cards' message
+When click 'Settings' link
+Then see 'User Login and Password' message
+And see 'User Profile' message
+And see 'Deactivate Account' message
+When click 'Favorite' link
+Then see 'Favorite products' message
+When click 'Recently Viewed' link
+Then see 'Recently viewed products' message
+When click 'Order History' link
+Then see 'Order History – Company name' message
+When click 'Quote History' link
+Then see 'Quotes History' message
+Then see 'Open Quotes' message
+Then see 'Expired Quotes' message

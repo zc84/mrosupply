@@ -1,6 +1,3 @@
-Meta:
-
-
 Scenario: 01. If item was added to the basketm add to basket should be changed to remove from basket button
 Meta:
 @tag priority:p2
@@ -16,6 +13,7 @@ And delete from basket icon appeared for this item
 Scenario: 02. Sort products by price(low to high)
 Meta:
 @tag priority:p4
+
 
 Given user on the home page
 When click 'Brands' link

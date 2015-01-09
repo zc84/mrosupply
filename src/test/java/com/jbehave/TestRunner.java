@@ -40,7 +40,7 @@ public class TestRunner extends ThucydidesJUnitStories {
     }
 
     /**
-     * Generates test plan from stories
+     * Generates test plan from stories f
      *
      * @throws IOException
      * @throws WriteException
