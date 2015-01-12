@@ -42,5 +42,6 @@ public class AccountPage extends AbstractPage {
         findBy(elements.get("Existing credit cards") + "//a[@title='Remove']").click();
         findBy(elements.get("Yes pop button")).waitUntilVisible();
         findBy(elements.get("Yes pop button")).click();
+
     }
 }
