@@ -1,3 +1,6 @@
+Meta:
+@capability checkout with paypal
+
 Scenario: 01. Logged user should be able to order items using paypal
 Meta:
 @tag priority:p1
@@ -6,7 +9,7 @@ Meta:
 
 Given logged user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And add '1' 'any' items to basket
 And click on 'Basket button'
@@ -29,7 +32,7 @@ Meta:
 
 Given user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And add '1' 'any' items to basket
 And click on 'Basket button'
@@ -52,7 +55,7 @@ Meta:
 
 Given logged user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And add '1' 'any' items to basket
 And click on 'Basket button'

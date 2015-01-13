@@ -2,8 +2,8 @@ package com.jbehave;
 
 import com.data.DataProvider;
 import com.steps.BasicSteps;
-import com.utils.DAO;
-import com.utils.Parser;
+import com.utils.*;
+import com.utils.Math;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -68,6 +68,7 @@ public class BasicFlow {
     public void select_file_to_upload() throws AWTException, InterruptedException {
         Thread.sleep(2000);
         basicSteps.set_clipboard_data(new File(DataProvider.TEST_FILES_TO_UPLOAD).getAbsolutePath());
+        Thread.sleep(2000);
         basicSteps.press_double_key(KeyEvent.VK_CONTROL, KeyEvent.VK_V);
         basicSteps.press_key(KeyEvent.VK_ENTER);
         basicSteps.press_key(KeyEvent.VK_ESCAPE);
@@ -86,6 +87,11 @@ public class BasicFlow {
     @When("wait '$milsecs'")
     public void waitabit(String milsecs) {
         basicSteps.waitABit(Long.parseLong(milsecs));
+    }
+
+    @When("enter random email in '$fieldName'")
+    public void enter_email(String fieldName) throws Exception {
+        enter_in(com.utils.Math.randInt(1, 99999) + "test" + Math.randInt(1, 99999) + "@test.com", fieldName);
     }
 
     @Then("see '$text' message")

@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
  * @author Dmitry Sherstobitov
  */
 
-public class ItemDetailsPage extends AbstractPage {
+public class ProductDetailsPage extends AbstractPage {
 
-    public ItemDetailsPage(WebDriver driver) {
+    public ProductDetailsPage(WebDriver driver) {
         super(driver);
     }
 

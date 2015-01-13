@@ -1,11 +1,13 @@
+Meta:
+@capability product details actions
+
 Scenario: 01. User should be able to add item to basket from item details page
 Meta:
 @tag priority:p1
 
-
 Given logged user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And open 'any' item
 Then 'Add to basket button' available
@@ -18,7 +20,7 @@ Meta:
 
 Given logged user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And open 'any' item
 Then 'Add to favorite link' available
@@ -28,11 +30,10 @@ Then see 'Product added to favorite' message
 Scenario: 03. User should be able to email item
 Meta:
 @tag priority:p1
-@ignore
 
 Given logged user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And open 'any' item
 Then 'Email link' available

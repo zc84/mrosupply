@@ -1,3 +1,6 @@
+Meta:
+@capability user actions
+
 Scenario: 01. User should be able to register
 Meta:
 @tag priority:p1
@@ -60,22 +63,6 @@ Scenario: 06. User should be able to upload form
 Meta:
 @priority p3
 
-
-Given todo
-Given logged user on the home page
-When click on 'My account link'
-Then user on the 'AccountPage'
-When click 'Forms' link
-And click on 'Choose file button'
-And select file to upload
-And enter 'test upload file' in 'File name field'
-And click on 'Submit button'
-Then see 'File has been uploaded successfully' message
-
-Scenario: 06. User should be able to upload form
-Meta:
-@priority p3
-
 Given logged user on the home page
 When click on 'My account link'
 Then user on the 'AccountPage'
@@ -112,7 +99,7 @@ Then see 'Favorite products' message
 When click 'Recently Viewed' link
 Then see 'Recently viewed products' message
 When click 'Order History' link
-Then see 'Order History – Company name' message
+Then see 'Order History' message
 When click 'Quote History' link
 Then see 'Quotes History' message
 Then see 'Open Quotes' message

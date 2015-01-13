@@ -1,3 +1,6 @@
+Meta:
+@capability admin
+
 Scenario: Change order status to Complete
 Meta:
 @tag priority:p1

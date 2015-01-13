@@ -1,3 +1,6 @@
+Meta:
+@capability login actions
+
 Scenario: Forgot password functionality
 Meta:
 @tag priority:p1

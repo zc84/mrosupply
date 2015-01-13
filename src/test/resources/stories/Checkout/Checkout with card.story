@@ -1,10 +1,13 @@
+Meta:
+@capability checkout with card
+
 Scenario: 01. Shipment method should be available for the ZKL Bearing Corp items
 Meta:
 @tag priority:p1
 @issue 297
 
 Given user on the home page
-And user on the 'BrandPage' page
+And user on the 'ProductsPage' page
 When click 'ZKL Bearing Corp.' link
 And add '1' 'any' items to basket
 When click on 'Basket button'
@@ -24,7 +27,7 @@ Meta:
 
 Given user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And open 'any' item
 When click on 'Add to basket button'
@@ -46,7 +49,7 @@ Meta:
 
 Given logged user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And add '1' 'any' items to basket
 And click on 'Basket button'
@@ -69,7 +72,7 @@ Meta:
 
 Given logged user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And add '1' 'any' items to basket
 And click on 'Basket button'
@@ -95,7 +98,7 @@ Meta:
 @ignore
 
 Given user on the home page
-And user on the 'BrandPage' page
+And user on the 'ProductsPage' page
 When click 'linktext' link
 And add '1' 'any' items to basket
 And click on 'Basket button'

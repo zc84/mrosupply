@@ -1,10 +1,13 @@
+Meta:
+@capability product actions
+
 Scenario: 01. If item was added to the basketm add to basket should be changed to remove from basket button
 Meta:
 @tag priority:p2
 
 Given user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And add '1' 'any' items to basket
 Then see 'Product added to your cart' message
@@ -17,7 +20,7 @@ Meta:
 
 Given user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And select 'Price: low to high' sorting
 Then products sort 'by price' for '2' pages
@@ -28,7 +31,7 @@ Meta:
 
 Given user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And select 'Price: high to low' sorting
 Then products sort 'by price desc' for '2' pages
@@ -39,7 +42,7 @@ Meta:
 
 Given user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 When select '36' items per page
 Then '36' producats available for '2' pages
@@ -50,7 +53,7 @@ Meta:
 
 Given user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And open 'any' item
 And go to 'HomePage' page
@@ -62,7 +65,7 @@ Meta:
 
 Given user on the home page
 When click 'Brands' link
-Then user on the 'BrandPage'
+Then user on the 'ProductsPage'
 When click 'ACME Electric' link
 And add '2' 'any' items to basket
 And click on 'Basket button'

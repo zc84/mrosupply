@@ -1,9 +1,12 @@
+Meta:
+@capability search
+
 Scenario: Search
 Meta:
 @tag priority:p1
 
 Given user on the home page
-When enter 'Automation ' in 'Search field'
+When enter 'Automation' in 'Search field'
 And press 'ENTER' for 'Search field'
 Then see 'Found' message
 And see 'products for' message
@@ -17,4 +20,4 @@ Given user on the home page
 When enter 'VOLTS' in 'Search field'
 And press 'ENTER' for 'Search field'
 Then 'Available products' available
-And each product has 'VOLTS' in title for '2' pages
+And each product has 'VOLT' in title for '2' pages

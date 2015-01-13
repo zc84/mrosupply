@@ -104,7 +104,13 @@ public class BasicSteps extends ScenarioSteps {
     @Step
     public void is_element_available(String elementName) throws Exception {
         WebElement element = get_element(elementName);
-        (currentPage.$(element)).waitUntilVisible();
+        try {
+            (currentPage.$(element)).waitUntilVisible();
+        } catch (Exception e) {
+            throw new Exception("Unable to locate '" + elementName + "' element due " + e.getMessage());
+
+        }
+
     }
 
     @Step
@@ -238,7 +244,11 @@ public class BasicSteps extends ScenarioSteps {
 
     @Step
     public void see_message(String message) throws Exception {
-        currentPage.waitForAllTextToAppear(message);
+        try {
+            currentPage.waitForAllTextToAppear(message);
+        } catch (Throwable e) {
+            throw new Exception("'" + message + "' text can't be found due " + e.getMessage());
+        }
     }
 
     @Step
@@ -287,8 +297,15 @@ public class BasicSteps extends ScenarioSteps {
     @Step
     public void set_page(String pageName) throws ClassNotFoundException {
 
-        @SuppressWarnings("unchecked") final Class<PageObject> pageObjectClass = (Class<PageObject>) Class.forName(PAGE_PATH + pageName);
-        AbstractPage.setCurrentPage((AbstractPage) getPages().get(pageObjectClass));
+        @SuppressWarnings("unchecked") final Class<PageObject> pageObjectClass;
+        try {
+            pageObjectClass = (Class<PageObject>) Class.forName(PAGE_PATH + pageName);
+            AbstractPage.setCurrentPage((AbstractPage) getPages().get(pageObjectClass));
+        } catch (Throwable e) {
+            e.printStackTrace();
+            throw new ClassNotFoundException("Unable to set " + pageName);
+        }
+
         try {
             ExpectedCondition<Boolean> e = new ExpectedCondition<Boolean>() {
                 @Override
