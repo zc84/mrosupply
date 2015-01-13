@@ -66,14 +66,30 @@ public class ProductSteps extends BasicSteps {
     @Step
     public void open_item(String productName) throws Exception {
 
-        WebElementFacade product;
+        WebElementFacade product = null;
+        List<WebElementFacade> availableProducts = productPage.get_available_products();
         if (productName.equals("any")) {
-            List<WebElementFacade> availableProducts = productPage.get_available_products();
             product = availableProducts.get(Math.randInt(0, availableProducts.size() - 1));
+        } else {
+            if (productName.split(" ").length > 1) {
+                for (WebElementFacade prd : availableProducts) {
+                    if (productPage.get_product_name(prd).contains(productName)) {
+                        product = prd;
+                        break;
+                    }
+                }
+            } else {
+                for (WebElementFacade prd : availableProducts) {
+                    if (productPage.get_product_id(prd).contains(productName)) {
+                        product = prd;
+                        break;
+                    }
+                }
+            }
         }
 
-//        TODO
-        else throw new Exception("Named item selection unsupported yet");
+        if (product == null)
+            throw new Exception(productName + " product wasn't found");
 
         DataProvider.SELECTED_PRODUCT = new Product();
 
@@ -141,5 +157,11 @@ public class ProductSteps extends BasicSteps {
     @Step
     public void go_to_page(String pageNumber) {
         productPage.go_to_page(pageNumber);
+    }
+
+    @Step
+    public void manufacturer_minimum_quantity_set() throws Exception {
+        see_message("Manufacturer Minimum Quantity");
+        DataProvider.PRODUCT_MIN_QUANTITY = productPage.get_product_minimum_quantity();
     }
 }

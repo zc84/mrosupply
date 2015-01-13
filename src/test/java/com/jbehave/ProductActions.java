@@ -66,4 +66,9 @@ public class ProductActions extends BasicFlow {
     public void correspondent_products_found(String partName, String pagesCount) throws Exception {
         productSteps.correspondent_products_found(partName, pagesCount);
     }
+
+    @Then("manufacturer minimum quantity set")
+    public void manufacturer_minimum_quantity_set() throws Exception {
+        productSteps.manufacturer_minimum_quantity_set();
+    }
 }

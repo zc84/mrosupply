@@ -15,11 +15,12 @@ public class DataProvider {
     public static Product ADDED_PRODUCT;
     public static Product SELECTED_PRODUCT;
     public static final String TEST_FILES_TO_UPLOAD = "src/main/resources/testfiletoupload.txt";
+    public static String PRODUCT_MIN_QUANTITY;
 
     public void clear() {
         new FlowDataProvider().clear();
         SELECTED_PRODUCT = null;
         ADDED_PRODUCT = null;
+        PRODUCT_MIN_QUANTITY = null;
     }
-
 }

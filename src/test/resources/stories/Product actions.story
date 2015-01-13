@@ -17,7 +17,6 @@ Scenario: 02. Sort products by price(low to high)
 Meta:
 @tag priority:p4
 
-
 Given user on the home page
 When click 'Brands' link
 Then user on the 'ProductsPage'
@@ -71,3 +70,17 @@ And add '2' 'any' items to basket
 And click on 'Basket button'
 Then user on the 'ShoppingCartPage'
 And 'value' of 'Products quantity field' is '2'
+
+Scenario: 07. User should be able to add on cart a certain amount of qty for any product on cart
+Meta:
+@tag priority:p3
+
+Given user on the home page
+When click 'Brands' link
+Then user on the 'ProductsPage'
+When click 'ACME Electric' link
+And add '2' 'any' items to basket
+And click on 'Basket button'
+Then user on the 'ShoppingCartPage'
+And 'value' of 'Products quantity field' is '2'
+

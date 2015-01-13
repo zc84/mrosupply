@@ -24,7 +24,6 @@ Meta:
 @tag priority:p1
 @issue 329
 
-
 Given user on the home page
 When click 'Brands' link
 Then user on the 'ProductsPage'
