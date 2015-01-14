@@ -39,7 +39,7 @@ public class ProductActions extends BasicFlow {
     @When("open '$productName' item")
     public void open_item(String productName) throws Exception {
         productSteps.open_item(productName);
-        user_on_the_page("ProductDetailsPage");
+        user_on_the_page("ProductsPage");
     }
 
     @Then("delete from basket icon appeared for this item")

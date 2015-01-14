@@ -17,7 +17,7 @@ Scenario: My Account/Company Accounts: User should be able to invite another use
 Scenario: 08. Minimum Order Quantity
 Meta:
 @tag priority:p3
-@ignore
+@debug
 
 Given user on the home page
 When click 'Brands' link
