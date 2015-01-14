@@ -317,6 +317,7 @@ public class BasicSteps extends ScenarioSteps {
         } catch (Exception e) {
             throw new IllegalStateException("Current " + pageName + " is not according to the expected url, current url is " + getDriver().getCurrentUrl());
         }
+        hide_chat();
     }
 
     @Step
@@ -348,6 +349,20 @@ public class BasicSteps extends ScenarioSteps {
         } catch (Throwable e) {
             return null;
         }
+    }
+
+    @Step
+    public void hide_chat() {
+        try {
+            currentPage.evaluateJavascript("document.getElementById(\"habla_window_state_div\").remove();");
+        } catch (Exception e) {
+
+        }
+    }
+
+    @Step
+    public void maximize_page() {
+        getDriver().manage().window().maximize();
     }
 
     private String get_full_text_from_element(String text, String elementName) throws Exception {

@@ -4,13 +4,16 @@ import com.data.DataProvider;
 import com.steps.CheckoutSteps;
 import com.utils.Gmail;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.Keys;
+
+import javax.xml.crypto.Data;
 
 /**
  * Created by dys on 12.01.2015.
  */
-public class CheckoutActions extends BasicFlow {
+public class ShoppingCartActions extends BasicFlow {
 
     @Steps
     CheckoutSteps checkoutSteps;
@@ -23,7 +26,7 @@ public class CheckoutActions extends BasicFlow {
         enter_in("user", "Last name field");
         waitabit("1000");
         press(Keys.TAB, "Last name field");
-        enter_in(DataProvider.USER_EMAIL, "Email field");
+        enter_in("invalidemail_bla@gmail.com", "Email field");
         waitabit("1000");
         press(Keys.TAB, "Email field");
         enter_in("5555555555", "Phone number field");
@@ -54,6 +57,11 @@ public class CheckoutActions extends BasicFlow {
         click_on("Paypal pay now button");
         basicSteps.wait_while_paypal_loading();
         waitabit("1000");
+    }
+
+    @Then("product quantity is correct")
+    public void product_quantity_is_correct() throws Exception {
+        element_attribute_value_is("Product quantitly field", "value", DataProvider.PRODUCT_MIN_QUANTITY);
     }
 
 }

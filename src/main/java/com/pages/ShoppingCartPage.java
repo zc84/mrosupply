@@ -18,6 +18,7 @@ public class ShoppingCartPage extends AbstractPage {
     public void init_elements() {
         elements.putAll(get_default_elements());
 
+        elements.put("Product quantitly field", "//input[@id='id_cart-0-qty']");
         elements.put("Continue button", "//*[text() = 'Continue']/..");
         elements.put("Checkout button", "//span[text() = 'Checkout']/..");
 

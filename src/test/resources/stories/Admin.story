@@ -6,6 +6,7 @@ Meta:
 @tag priority:p1
 
 Given admin on the home page
+And maximize the page
 When click on 'Orders link'
 And open 'Unclaimed' order created by 'automation user'
 And select 'Completed --' from 'Status dropdown'

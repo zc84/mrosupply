@@ -84,3 +84,19 @@ And click on 'Basket button'
 Then user on the 'ShoppingCartPage'
 And 'value' of 'Products quantity field' is '2'
 
+Scenario: 08. Minimum Order Quantity
+Meta:
+@tag priority:p3
+
+Given user on the home page
+When click 'Brands' link
+Then user on the 'ProductsPage'
+When click 'ACME Electric' link
+And open '885230' item
+Then manufacturer minimum quantity set
+When click on 'Add to basket button'
+Then user on the 'ShoppingCartPage'
+And product quantity is correct
+When enter '1' in 'Product quantitly field'
+And click on 'Checkout button'
+Then see 'Minimum Order Quantity for Item #885230' message

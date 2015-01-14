@@ -39,6 +39,11 @@ public class BasicFlow {
     public void info_message(String text) {
     }
 
+    @Given("maximize the page")
+    public void maximize_page() {
+        basicSteps.maximize_page();
+    }
+
     @When("click on '$elementName'")
     public void click_on(String elementName) throws Exception {
         basicSteps.click_on(elementName);
