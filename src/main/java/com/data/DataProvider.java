@@ -5,7 +5,8 @@ import com.utils.LoadProperties;
 public class DataProvider {
 
 
-    public static final String USERNAME = "mrosupplytesting@gmail.com";
+    public static final String USERNAME = "zc84@mail.ru";
+//    public static final String USERNAME = "mrosupplytesting@gmail.com";
     public static final String PASSWORD = "Toriabra909";
     public static final String ADMIN_USERNAME = "nicoletavisteanu@yahoo.com";
     public static final String ADMIN_PASSWORD = "nico7777";
