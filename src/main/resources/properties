@@ -2,7 +2,7 @@
 url=${webdriver.base.url}
 
 #Gmail properties
-gmail.address=mrosupplytesting@gmail.com
+gmail.address=mrosupplytest@gmail.com
 gmail.password=Toriabra909
 
 #DB properties
