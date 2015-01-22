@@ -15,6 +15,7 @@ public class ProductsPage extends AbstractPage {
         super(driver);
     }
 
+
     String itemIdSelector = ".//div[@class='box image']/../a";
     String itemNameSelector = ".//h2/a";
     String itemPriceSelector = ".//strong[contains(text(), '$')]";
