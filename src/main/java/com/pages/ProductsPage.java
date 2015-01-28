@@ -60,7 +60,7 @@ public class ProductsPage extends AbstractPage {
     }
 
     public String get_product_price(WebElementFacade product) {
-        return product.then().findBy(itemPriceSelector).getText().trim().replace("$", "");
+        return product.then().findBy(itemPriceSelector).getText().trim().replaceAll("[^0-9]+", "");
     }
 
     public void open_product(WebElementFacade product) {

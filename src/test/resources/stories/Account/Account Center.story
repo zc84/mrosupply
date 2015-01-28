@@ -1,22 +1,7 @@
 Meta:
 @capability account
 
-Scenario: 01. User should be able to register
-Meta:
-@tag priority:p1
-@issue 294
-
-Given user on the home page
-When click 'Register' link
-Then user on the 'RegistrationPage'
-When fill first registration form
-And click 'Next >>>' button
-When fill second registration form
-And click 'Next >>>' button
-And click 'Register' button
-Then see 'Account Center' message
-
-Scenario: 02. Add/Delete credit card
+Scenario: 01. Add/Delete credit card
 Meta:
 @tag priority:p4
 @issue 305
@@ -31,7 +16,7 @@ Then 'Add credit card popup' available
 When add credit card
 Then see '4242' message
 
-Scenario: 03. User should be able to upload form
+Scenario: 02. User should be able to upload form
 Meta:
 @priority p3
 
@@ -45,7 +30,7 @@ And enter 'test upload file' in 'File name field'
 And click on 'Submit button'
 Then see 'File has been uploaded successfully' message
 
-Scenario: 04. All submenues of My account should be accessible
+Scenario: 03. All submenues of My account should be accessible
 Meta:
 @priority p3
 

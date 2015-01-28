@@ -10,14 +10,14 @@ public class Product {
 
     private WebElementFacade productElement;
     private String productName;
-    private String productPrice;
+    private Integer productPrice;
     private String productId;
 
-    public String getProductPrice() {
+    public Integer getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(String productPrice) {
+    public void setProductPrice(Integer productPrice) {
         this.productPrice = productPrice;
     }
 

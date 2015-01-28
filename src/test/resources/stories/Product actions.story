@@ -101,7 +101,7 @@ When enter '1' in 'Product quantitly field'
 And click on 'Checkout button'
 Then see 'Minimum Order Quantity for Item #885230' message
 
-Scenario: 09. Order price should be calculated correctly
+Scenario: 09. Orders price should be calculated correctly
 Meta:
 @tag priority:p3
 @debug
@@ -116,3 +116,12 @@ And add '1' 'any' items to basket
 And click on 'Basket button'
 Then user on the 'ShoppingCartPage'
 Then basket subtotal price calculated correctly
+When click on 'Checkout button'
+Then total price on location calculated correctly
+When fill personal info section
+And fill shipping info section
+And click on 'Continue button'
+Then see 'Choose shipment method' message
+When get shipment price
+When click on 'Continue button'
+Then total price on payment calculated correctly

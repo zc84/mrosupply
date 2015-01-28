@@ -31,7 +31,6 @@ public class ShoppingCartPage extends AbstractPage {
         elements.put("Products quantity field", "//input[contains(@id, 'id_cart')][contains(@id, 'qty')]");
         elements.put("Calculated total price", "//dd[@id='subtotal']");
 
-
         elements.put("First name field", "//input[@id = 'id_order_info-first_name']");
         elements.put("Last name field", "//input[@id = 'id_order_info-last_name']");
         elements.put("Email field", "//input[@id = 'id_order_info-email']");
@@ -42,6 +41,9 @@ public class ShoppingCartPage extends AbstractPage {
         elements.put("State dropdown", "//select[@id = 'id_order_info-shipping_state']");
         elements.put("Billing state dropdown", "//select[@id = 'id_order_info-billing_state']");
         elements.put("Postal code field", "//input[@id = 'id_order_info-shipping_postal_code']");
+        elements.put("Products shipping section", "//table[@class='shipping_price_table']");
+
+        elements.put("Total price on location", "//strong[@class='total']/span");
 
         elements.put("Card number field", "//input[@id = 'id_preview-number']");
         elements.put("CVV number field", "//input[@id = 'id_preview-cvv_number']");
@@ -57,6 +59,8 @@ public class ShoppingCartPage extends AbstractPage {
         elements.put("Paypal password field", "//input[@id = 'login_password']");
         elements.put("Paypal login button", "//input[@id = 'submitLogin']");
         elements.put("Paypal pay now button", "//input[@id = 'continue']");
+        elements.put("Total price section", "//aside[@class = 'checkout_overview']");
+
 
     }
 
@@ -65,11 +69,43 @@ public class ShoppingCartPage extends AbstractPage {
 
         List<Product> products = new ArrayList<>();
 
-        for(WebElementFacade prodElement: findAll(elements.get("Product list"))) {
+        for (WebElementFacade prodElement : findAll(elements.get("Product list"))) {
             Product pr = new Product();
-            pr.setProductPrice(prodElement.then().findBy("./td/strong[@class='mro_red']").getText().replaceAll("[^0-9]+", ""));
+            Integer produtQuantity = Integer.parseInt(prodElement.then().findBy("." + elements.get("Products quantity field")).getAttribute("value"));
+            pr.setProductPrice(Integer.parseInt(prodElement.then().findBy("./td/strong[@class='mro_red']")
+                    .getText().replaceAll("[^0-9]+", "")) * produtQuantity);
             products.add(pr);
         }
         return products;
+    }
+
+    public Integer get_shipping_total_price() {
+
+        Integer total = 0;
+        for (WebElementFacade shipSection : findAll(elements.get("Products shipping section"))) {
+            total += Integer.parseInt(shipSection.then().findBy(".//div[@class='shipping_price']//span[@class='price']").
+                    getText().replaceAll("[^0-9]+", ""));
+        }
+        return total;
+    }
+
+    public Integer get_subtotal_from_payment() {
+        return Integer.parseInt(findBy(elements.get("Total price section")).then().findBy(".//div[contains(text(), 'Subtotal:')]/strong").
+                getText().replaceAll("[^0-9]+", ""));
+    }
+
+    public Integer get_shipping_from_payment() {
+        return Integer.parseInt(findBy(elements.get("Total price section")).then().findBy(".//div[contains(text(), 'Shipping:')]/strong").
+                getText().replaceAll("[^0-9]+", ""));
+    }
+
+    public Integer get_tax_payment() {
+        return Integer.parseInt(findBy(elements.get("Total price section")).then().findBy(".//div[contains(text(), 'Sales tax:')]/strong").
+                getText().replaceAll("[^0-9]+", ""));
+    }
+
+    public Integer get_grand_payment() {
+        return Integer.parseInt(findBy(elements.get("Total price section")).then().findBy(".//div[contains(text(), 'Grand total:')]/strong").
+                getText().replaceAll("[^0-9]+", ""));
     }
 }

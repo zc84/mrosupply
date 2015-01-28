@@ -365,6 +365,13 @@ public class BasicSteps extends ScenarioSteps {
         getDriver().manage().window().maximize();
     }
 
+    @Step
+    public void check_isTrue(String assertMessage, boolean condition) {
+        if (assertMessage == null || assertMessage.isEmpty())
+            Assert.assertTrue(condition);
+        else Assert.assertTrue(assertMessage, condition);
+    }
+
     private String get_full_text_from_element(String text, String elementName) throws Exception {
 
         WebElementFacade element = currentPage.$(get_element(elementName)).findBy(By.xpath(".//*[contains(text(),'" + text + "')]"));

@@ -43,7 +43,7 @@ public class AbstractPage extends PageObject {
         elements.put("Signout link", "//a[text() = 'Signout']");
         elements.put("Sign In", "//a[text() = 'Sign In']");
         elements.put("Basket button", "//div[@class = 'cart_bg']//a");
-        elements.put("Available products", "//div[@class='results-area']//td/..");
+        elements.put("Available products", "//a[contains(@class,'add_to_cart')]/../.././.");
         elements.put("Products in recent view pool", "//div[@class='recent']//div[@class = 'recent_item']");
 
         elements.put("Yes pop button", "//span[@class='ui-button-text'][text()='Yes']");

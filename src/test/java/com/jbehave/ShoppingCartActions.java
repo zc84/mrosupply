@@ -1,6 +1,7 @@
 package com.jbehave;
 
 import com.data.DataProvider;
+import com.data.FlowDataProvider;
 import com.steps.CheckoutSteps;
 import com.utils.Gmail;
 import net.thucydides.core.annotations.Steps;
@@ -66,7 +67,41 @@ public class ShoppingCartActions extends BasicFlow {
     public void basket_subtotal_price_correct() throws Exception {
         checkoutSteps.calculate_products_total_price();
         Integer totalPriceOnPage = Integer.parseInt(checkoutSteps.get_displayed_total_price());
-        checkoutSteps.is_total_price_correct(totalPriceOnPage);
+        basicSteps.check_isTrue("Total products price is " + totalPriceOnPage + ", should be " +
+                FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE, FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE.equals(totalPriceOnPage));
+    }
+
+    @Then("total price on location calculated correctly")
+    public void location_subtotal_price_correct() throws Exception {
+        Integer totalPriceOnPage = Integer.parseInt(checkoutSteps.get_displayed_total_price_on_location());
+        basicSteps.check_isTrue("Total products price is " + totalPriceOnPage + ", should be " +
+                FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE, FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE.equals(totalPriceOnPage));
+    }
+
+    @When("get shipment price")
+    public void get_shipment_price() throws Exception {
+        FlowDataProvider.ORDERED_PRODUCT_SHIPMENT_PRICE = checkoutSteps.get_shipping_total_price();
+    }
+
+    @Then("total price on payment calculated correctly")
+    public void payment_subtotal_price_correct() throws Exception {
+
+        Integer price = checkoutSteps.get_subtotal_from_payment();
+        basicSteps.check_isTrue("Subtotal price is " + price + ", should be " +
+                FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE, FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE.equals(price));
+
+        price = checkoutSteps.get_shipping_price_from_payment();
+        basicSteps.check_isTrue("Shipping price is " + price + ", should be " +
+                FlowDataProvider.ORDERED_PRODUCT_SHIPMENT_PRICE, FlowDataProvider.ORDERED_PRODUCT_SHIPMENT_PRICE.equals(price));
+
+        price = checkoutSteps.get_tax_payment();
+
+        Integer grandPrice = checkoutSteps.get_grand_payment();
+        Integer expectedPrice = price + FlowDataProvider.ORDERED_PRODUCT_SHIPMENT_PRICE + FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE;
+
+        basicSteps.check_isTrue("Grand total is " + grandPrice + ", should be " + expectedPrice, expectedPrice.equals(grandPrice));
+
+
     }
 
 }

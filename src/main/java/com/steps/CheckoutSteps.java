@@ -5,7 +5,6 @@ import com.data.Product;
 import com.pages.ShoppingCartPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
-import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -40,7 +39,7 @@ public class CheckoutSteps extends BasicSteps {
     @Step
     public void calculate_products_total_price() {
         for (Product pr : cartPage.get_products())
-            FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE += Integer.parseInt(pr.getProductPrice());
+            FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE += pr.getProductPrice();
     }
 
     @Step
@@ -49,7 +48,33 @@ public class CheckoutSteps extends BasicSteps {
     }
 
     @Step
-    public void is_total_price_correct(Integer totalPriceOnPage) {
-        Assert.assertTrue("Total products price is " + totalPriceOnPage + ", should be " + FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE, FlowDataProvider.ORDERED_PRODUCT_TOTAL_PRICE == totalPriceOnPage);
+    public String get_displayed_total_price_on_location() throws Exception {
+        WebElement element = get_element("Total price on location");
+        return element.getText().replaceAll("[^0-9]+", "");
+    }
+
+    @Step
+    public Integer get_shipping_total_price() {
+        return cartPage.get_shipping_total_price();
+    }
+
+    @Step
+    public Integer get_subtotal_from_payment() {
+        return cartPage.get_subtotal_from_payment();
+    }
+
+    @Step
+    public Integer get_shipping_price_from_payment() {
+        return cartPage.get_shipping_from_payment();
+    }
+
+    @Step
+    public Integer get_tax_payment() {
+        return cartPage.get_tax_payment();
+    }
+
+    @Step
+    public Integer get_grand_payment() {
+        return cartPage.get_grand_payment();
     }
 }

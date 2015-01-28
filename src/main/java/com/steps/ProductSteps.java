@@ -57,7 +57,7 @@ public class ProductSteps extends BasicSteps {
 
         DataProvider.ADDED_PRODUCT.setProductElement(product);
         DataProvider.ADDED_PRODUCT.setProductName(productPage.get_product_name(product));
-        DataProvider.ADDED_PRODUCT.setProductPrice(productPage.get_product_price(product));
+        DataProvider.ADDED_PRODUCT.setProductPrice(Integer.parseInt(productPage.get_product_price(product)));
         productPage.add_to_basket(product, count);
         show_message(count + " " + DataProvider.ADDED_PRODUCT.getProductName() + " items added to basket");
 
@@ -95,7 +95,7 @@ public class ProductSteps extends BasicSteps {
 
         DataProvider.SELECTED_PRODUCT.setProductElement(product);
         DataProvider.SELECTED_PRODUCT.setProductName(productPage.get_product_name(product));
-        DataProvider.SELECTED_PRODUCT.setProductPrice(productPage.get_product_price(product));
+        DataProvider.SELECTED_PRODUCT.setProductPrice(Integer.parseInt(productPage.get_product_price(product)));
         DataProvider.SELECTED_PRODUCT.setProductId(productPage.get_product_id(product));
         productPage.open_product(product);
         show_message(DataProvider.SELECTED_PRODUCT.getProductName() + " item was opened");
