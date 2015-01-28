@@ -100,3 +100,19 @@ And product quantity is correct
 When enter '1' in 'Product quantitly field'
 And click on 'Checkout button'
 Then see 'Minimum Order Quantity for Item #885230' message
+
+Scenario: 09. Order price should be calculated correctly
+Meta:
+@tag priority:p3
+@debug
+
+Given user on the home page
+When click 'Brands' link
+Then user on the 'ProductsPage'
+When click 'ACME Electric' link
+And add '1' 'any' items to basket
+And add '1' 'any' items to basket
+And add '1' 'any' items to basket
+And click on 'Basket button'
+Then user on the 'ShoppingCartPage'
+Then basket subtotal price calculated correctly

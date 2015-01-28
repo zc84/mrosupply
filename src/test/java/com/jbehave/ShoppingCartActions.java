@@ -8,8 +8,6 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.Keys;
 
-import javax.xml.crypto.Data;
-
 /**
  * Created by dys on 12.01.2015.
  */
@@ -62,6 +60,13 @@ public class ShoppingCartActions extends BasicFlow {
     @Then("product quantity is correct")
     public void product_quantity_is_correct() throws Exception {
         element_attribute_value_is("Product quantitly field", "value", DataProvider.PRODUCT_MIN_QUANTITY);
+    }
+
+    @Then("basket subtotal price calculated correctly")
+    public void basket_subtotal_price_correct() throws Exception {
+        checkoutSteps.calculate_products_total_price();
+        Integer totalPriceOnPage = Integer.parseInt(checkoutSteps.get_displayed_total_price());
+        checkoutSteps.is_total_price_correct(totalPriceOnPage);
     }
 
 }

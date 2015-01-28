@@ -1,7 +1,12 @@
 package com.pages;
 
+import com.data.Product;
 import net.thucydides.core.annotations.At;
+import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Dmitry Sherstobitov
@@ -22,7 +27,10 @@ public class ShoppingCartPage extends AbstractPage {
         elements.put("Continue button", "//*[text() = 'Continue']/..");
         elements.put("Checkout button", "//span[text() = 'Checkout']/..");
 
+        elements.put("Product list", "//div[@class='results-area']//tbody/tr");
         elements.put("Products quantity field", "//input[contains(@id, 'id_cart')][contains(@id, 'qty')]");
+        elements.put("Calculated total price", "//dd[@id='subtotal']");
+
 
         elements.put("First name field", "//input[@id = 'id_order_info-first_name']");
         elements.put("Last name field", "//input[@id = 'id_order_info-last_name']");
@@ -53,4 +61,15 @@ public class ShoppingCartPage extends AbstractPage {
     }
 
 
+    public List<Product> get_products() {
+
+        List<Product> products = new ArrayList<>();
+
+        for(WebElementFacade prodElement: findAll(elements.get("Product list"))) {
+            Product pr = new Product();
+            pr.setProductPrice(prodElement.then().findBy("./td/strong[@class='mro_red']").getText().replaceAll("[^0-9]+", ""));
+            products.add(pr);
+        }
+        return products;
+    }
 }
